@@ -9,22 +9,15 @@
 		<delete dir="${basedir}/build/coverage" />
 		<delete dir="${basedir}/build/logs" />
 		<delete dir="${basedir}/build/pdepend" />
-		<delete file="${basedir}/composer.lock"/>
 
 		<mkdir dir="${basedir}/build/api" />
 		<mkdir dir="${basedir}/build/coverage" />
 		<mkdir dir="${basedir}/build/logs" />
 		<mkdir dir="${basedir}/build/pdepend" />
 	</target>
-		<target name="installdep" description="Install build dependencies using composer">
-		<exec executable="composer">
-			<arg value="install" />
-			<arg value="--no-dev" />
-		</exec>
-	</target>
 	
 	<target name="phpunit" description="Run unit tests using PHPUnit and generates junit.xml and clover.xml">
-		<exec executable="phpunit.phar">
+		<exec executable="phpunit">
 			<arg value="-d" />
 			<arg value="zend.enable_gc=0" />
 		</exec>
@@ -62,6 +55,12 @@
 		</exec>
 	</target>
 
+	<target name="installdep" description="Install build dependencies using composer">
+		<exec executable="composer">
+			<arg value="update" />
+			<arg value="--no-dev" />
+		</exec>
+	</target>
 
 	<target name="phpmd" description="Generate pmd.xml using PHPMD">
 		<exec executable="phpmd">
