@@ -18,7 +18,7 @@
 
 	<target name="phpunit" description="Run unit tests using PHPUnit and generates junit.xml and clover.xml">
 		<exec executable="phpunit">
-			<arg value="-d" />
+			<arg value="-c" />
 			<arg value="zend.enable_gc=0" />
 		</exec>
 	</target>
